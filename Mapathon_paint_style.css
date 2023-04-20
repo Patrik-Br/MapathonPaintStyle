@@ -1,0 +1,134 @@
+meta {
+  title: "Mapathon paint style";
+  description: "Experimental paint style for JOSM training on Missing maps mapathons";
+  version: "1";
+  author: "Patrik_B , Filip009";
+  link: "https://github.com/Patrik-Br/MapathonPaintStyle";
+}
+
+
+/* Buildings tagged different then YES */
+way[building][!building?]:modified {
+    text: tag("building"); 
+    fill-color: orange;
+    casing-color: orange;
+    casing-width: 4;   
+  }
+
+/* Shared nodes */
+  way[highway]:modified > node:connection
+{
+	set .way5;
+	
+}
+
+way[building]:closed:modified > node:connection!.way5
+{
+	color: orange;
+    fill-color: orange;
+    fill-opacity: 0.7;
+	symbol-shape: triangle;
+	symbol-size: 25;
+
+	symbol-fill-color: orange;
+	symbol-fill-opacity: 0.6;
+
+	symbol-stroke-color: black;
+	symbol-stroke-opacity: 0.7;
+    text:tr("Connected buildings!");
+    text-color: white;
+    text-halo-color: black;
+    text-halo-radius: 1.5;
+    font-size: 15;
+    font-weight: bold;
+    color: #FF0000;
+    width: 1;
+    text-position: center;
+    set .connectedBuildings;
+}
+
+way[building]:closed > node:connection.way5
+{
+	
+    color: red;
+    fill-color: red;
+    fill-opacity: 0.7;
+	symbol-shape: triangle;
+	symbol-size: 25;
+
+	symbol-fill-color: red;
+	symbol-fill-opacity: 0.6;
+
+	symbol-stroke-color: black;
+	symbol-stroke-opacity: 0.7; 
+    text:tr("Building connected to highway!");
+    text-color: white;
+    text-halo-color: black;
+    text-halo-radius: 1.5;
+    font-size: 15;
+    font-weight: bold;
+    color: #FF0000;
+    width: 1;
+    text-position: center;
+    set .connectedBuildingsToHighway;
+	
+}
+
+/* Overlaping buildings */
+area:closed[building] ⧉ area:closed[building]:modified {
+    text: tr("Overlapping Buildings!");
+    text-color: white;
+    text-halo-color: black;
+    text-halo-radius: 1.5;
+    font-size: 15;
+    font-weight: bold;
+    color: #FF0000;
+    width: 1;
+    text-position: center;
+    set .overlapingBuildings;
+  }
+
+  /* Building inside buildings */
+  *[building][building!~/no|entrance/][any(tag("layer"),"0") = any(parent_tag("layer"),"0")]:modified ∈ *[building][building!~/no|entrance/]
+
+  {
+      set .buildinginside
+  }
+
+  
+  way.buildinginside {
+      text: tr("Building inside building!");
+      font-size: 15;
+      font-weight: bold;
+      text-position: center;
+      width: 5;
+      casing-width: 3;
+      casing-color: red;
+      text-color: white;
+      text-halo-color: black;
+      text-halo-radius: 1.5;
+      set .buildingInsideBuilding;
+  }
+
+/* Slovak translation */
+  setting::slovak {
+    type: boolean;
+    label: tr("Slovenčina");
+    default: false;
+  }
+  
+  *.connectedBuildings[setting("slovak")] {
+    text: tr("Spojené budovy!");
+}
+
+*.connectedBuildingsToHighway[setting("slovak")] {
+  text: tr("Budova spojená s cestou!");
+}
+
+*.overlapingBuildings[setting("slovak")] {
+  text: tr("Budovy sa prekrývajú!");
+}
+
+*.buildingInsideBuilding[setting("slovak")] {
+  text: tr("Budova v budove!");
+}
