@@ -16,7 +16,7 @@ way[building][!building?]:modified {
   }
 
 /* Shared nodes */
-  way[highway]:modified > node:connection
+  way[highway] > node:connection
 {
 	set .way5;
 	
@@ -35,7 +35,7 @@ way[building]:closed:modified > node:connection!.way5
 
 	symbol-stroke-color: black;
 	symbol-stroke-opacity: 0.7;
-    text:tr("Connected buildings!");
+    text:tr("Connected building!");
     text-color: white;
     text-halo-color: black;
     text-halo-radius: 1.5;
@@ -75,7 +75,20 @@ way[building]:closed > node:connection.way5
 }
 
 /* Overlaping buildings */
-area:closed[building] ⧉ area:closed[building]:modified {
+area:closed[building] ⧉ area:closed[building]:new {
+    text: tr("Overlapping Buildings!");
+    text-color: white;
+    text-halo-color: black;
+    text-halo-radius: 1.5;
+    font-size: 15;
+    font-weight: bold;
+    color: #FF0000;
+    width: 1;
+    text-position: center;
+    set .overlapingBuildings;
+  }
+
+  area:closed[building] ⧉ area:closed[building]:modified {
     text: tr("Overlapping Buildings!");
     text-color: white;
     text-halo-color: black;
@@ -118,7 +131,7 @@ area:closed[building] ⧉ area:closed[building]:modified {
   }
   
   *.connectedBuildings[setting("slovak")] {
-    text: tr("Spojené budovy!");
+    text: tr("Pripojená budova!");
 }
 
 *.connectedBuildingsToHighway[setting("slovak")] {

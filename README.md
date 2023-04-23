@@ -1,1 +1,1 @@
-Experimenting paint style for beginner JOSM training on Missing maps mapathons.
+Experimental paint style for beginner JOSM training on Missing maps mapathons. Created with Filip009.
