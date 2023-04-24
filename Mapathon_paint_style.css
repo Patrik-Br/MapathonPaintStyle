@@ -8,12 +8,12 @@ meta {
 
 
 /* Buildings tagged different then YES */
-way[building][!building?]:modified {
-    text: tag("building"); 
-    fill-color: orange;
-    casing-color: orange;
-    casing-width: 4;   
-  }
+way[building][!building?]:new {
+  text: tag("building"); 
+  fill-color: orange;
+  casing-color: orange;
+  casing-width: 4;   
+}
 
 /* Shared nodes */
   way[highway] > node:connection
