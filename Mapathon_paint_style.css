@@ -1,7 +1,7 @@
 meta {
   title: "Mapathon paint style";
   description: "Experimental paint style for JOSM training on Missing maps mapathons";
-  version: "1";
+  version: "2";
   author: "Patrik_B , Filip009";
   link: "https://github.com/Patrik-Br/MapathonPaintStyle";
 }
@@ -47,7 +47,41 @@ way[building]:closed:modified > node:connection!.way5
     set .connectedBuildings;
 }
 
-way[building]:closed > node:connection.way5
+way[building]:closed:modified > node:connection.way5
+{
+	
+    color: red;
+    fill-color: red;
+    fill-opacity: 0.7;
+	symbol-shape: triangle;
+	symbol-size: 25;
+
+	symbol-fill-color: red;
+	symbol-fill-opacity: 0.6;
+
+	symbol-stroke-color: black;
+	symbol-stroke-opacity: 0.7; 
+    text:tr("Building connected to highway!");
+    text-color: white;
+    text-halo-color: black;
+    text-halo-radius: 1.5;
+    font-size: 15;
+    font-weight: bold;
+    color: #FF0000;
+    width: 1;
+    text-position: center;
+    set .connectedBuildingsToHighway;
+	
+}
+
+/* checking if modified highway has connected nodes with building */
+way[highway]:modified > node:connection 
+{
+	set .way7;
+	
+}
+
+way[building]:closed > node:connection.way7
 {
 	
     color: red;
