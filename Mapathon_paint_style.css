@@ -5,15 +5,15 @@ meta {
   author: "Patrik_B , Filip009";
   link: "https://github.com/Patrik-Br/MapathonPaintStyle";
 }
-
+/* based on "Inline_Validation" and "Missing Maps / Youth Mappers Validators Checks" paint styles */
 
 /* Buildings tagged different then YES */
 way[building][!building?]:new {
-  text: tag("building"); 
-  fill-color: orange;
-  casing-color: orange;
-  casing-width: 4;   
-}
+    text: tag("building"); 
+    fill-color: orange;
+    casing-color: orange;
+    casing-width: 4;   
+  }
 
 /* Shared nodes */
   way[highway] > node:connection
@@ -70,8 +70,7 @@ way[building]:closed:modified > node:connection.way5
     color: #FF0000;
     width: 1;
     text-position: center;
-    set .connectedBuildingsToHighway;
-	
+    set .connectedBuildingsToHighway;	
 }
 
 /* checking if modified highway has connected nodes with building */
@@ -105,7 +104,6 @@ way[building]:closed > node:connection.way7
     width: 1;
     text-position: center;
     set .connectedBuildingsToHighway;
-	
 }
 
 /* Overlaping buildings */
@@ -142,7 +140,6 @@ area:closed[building] ⧉ area:closed[building]:new {
       set .buildinginside
   }
 
-  
   way.buildinginside {
       text: tr("Building inside building!");
       font-size: 15;
