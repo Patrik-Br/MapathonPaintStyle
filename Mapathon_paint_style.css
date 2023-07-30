@@ -1,13 +1,13 @@
 meta {
   title: "Mapathon paint style";
   description: "Experimental paint style for JOSM training on Missing maps mapathons";
-  version: "2";
+  version: "3";
   author: "Patrik_B , Filip009";
   link: "https://github.com/Patrik-Br/MapathonPaintStyle";
 }
 /* based on "Inline_Validation" and "Missing Maps / Youth Mappers Validators Checks" paint styles */
 
-/* Buildings tagged different then YES */
+/* New building tagged different then building=yes */
 way[building][!building?]:new {
     text: tag("building"); 
     fill-color: orange;
@@ -22,6 +22,7 @@ way[building][!building?]:new {
 	
 }
 
+/* Connected buildings */
 way[building]:closed:modified > node:connection!.way5
 {
 	color: orange;
@@ -47,6 +48,7 @@ way[building]:closed:modified > node:connection!.way5
     set .connectedBuildings;
 }
 
+/* Building connected to highway */
 way[building]:closed:modified > node:connection.way5
 {
 	
@@ -73,7 +75,7 @@ way[building]:closed:modified > node:connection.way5
     set .connectedBuildingsToHighway;	
 }
 
-/* checking if modified highway has connected nodes with building */
+/* Checking if modified highway has connected nodes with building */
 way[highway]:modified > node:connection 
 {
 	set .way7;
