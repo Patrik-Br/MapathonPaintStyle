@@ -16,8 +16,12 @@ The user can toggle on Slovak translation of the warnings by right clicking on t
 
 ![settings SK](https://github.com/Patrik-Br/MapathonPaintStyle/assets/83399473/ab00606f-a948-4699-823e-ffcab208605f)
 
-Then the warnings looks like
+Then the warnings will looks like:
 
 ![SK](https://github.com/Patrik-Br/MapathonPaintStyle/assets/83399473/c9387c12-31b4-4b6e-90e6-e3f61dcf3aae)
+
+To use this paint stile separately without the JOSM preset file, add new paint style into JOSM using the plus icon and paste this into URL/File:
+https://raw.githubusercontent.com/Patrik-Br/MapathonPaintStyle/main/Mapathon_paint_style.css
+
 
 Made by [Patrik_B](https://www.openstreetmap.org/user/Patrik_B) and [filip009](https://www.openstreetmap.org/user/Filip009).
