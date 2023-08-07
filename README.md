@@ -20,7 +20,7 @@ Then the warnings will looks like:
 
 ![SK](https://github.com/Patrik-Br/MapathonPaintStyle/assets/83399473/c9387c12-31b4-4b6e-90e6-e3f61dcf3aae)
 
-To use this paint style separately without the JOSM preset file, add new paint style into JOSM using the plus icon and paste this into URL/File:
+To use this paint style separately without the JOSM preset file, add new paint style into JOSM using the plus icon and paste this into URL/File:</b>
 https://raw.githubusercontent.com/Patrik-Br/MapathonPaintStyle/main/Mapathon_paint_style.css
 
 ![preferences](https://github.com/Patrik-Br/MapathonPaintStyle/assets/83399473/771f567c-2536-4588-80ff-657addf34b43)
